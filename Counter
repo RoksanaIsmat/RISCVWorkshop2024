@@ -27,7 +27,7 @@ int main()
 	}
 }
 
-Assembly version from Godblot compiler 
+Assembly version from Godblot compiler RISC V 
 
 delay(int):
         addi    sp,sp,-16
