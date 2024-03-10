@@ -1,4 +1,4 @@
-Code for Counter 
+#Code for Counter 
 #include <stdio.h>
 #include <time.h>
 
@@ -236,6 +236,44 @@ main:                                   # @main
         cmp     ebp, 16
         cmove   ebp, r15d
         jmp     .LBB2_1
+.L.str:
+        .asciz  "Count value is: %d\n"
+
+
+Assembly Version for ARM 
+delay(int):
+        push    {r4, lr}
+        mov     r4, r0
+        bl      clock
+        add     r4, r0, r4
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+        bl      clock
+        cmp     r0, r4
+        blt     .LBB0_1
+        pop     {r4, lr}
+        bx      lr
+display(int):
+        push    {r11, lr}
+        mov     r1, r0
+        ldr     r0, .LCPI1_0
+        bl      printf
+        pop     {r11, lr}
+        bx      lr
+.LCPI1_0:
+        .long   .L.str
+main:
+        mov     r5, #0
+        mov     r4, #288
+        orr     r4, r4, #499712
+.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
+        mov     r0, r5
+        bl      display(int)
+        mov     r0, r4
+        bl      delay(int)
+        add     r0, r5, #1
+        subs    r5, r0, #16
+        movne   r5, r0
+        b       .LBB2_1
 .L.str:
         .asciz  "Count value is: %d\n"
 
