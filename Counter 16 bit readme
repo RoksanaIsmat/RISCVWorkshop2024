@@ -1,1 +1,7 @@
+The main objective of this task was to compare between various assembly language compilers 
+The 4 types of processors that are considered here are ARM, RISC V , INTEL and Arduino 
 
+ARM 34 lines 
+RISC V 47 lines 
+Intel 44 lines 
+Arduino 114 lines 
